@@ -3,6 +3,7 @@ services:
   jenkins:
     container_name: "he14vis-jenkins"
     build: ./jenkins/
+    image: "he14vis/jenkins:2.46.2"
     restart: unless-stopped
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
