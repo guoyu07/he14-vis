@@ -1,0 +1,28 @@
+version: "2"
+services:
+  jenkins:
+    container_name: "he14vis-jenkins"
+    build: ./jenkins/
+    restart: unless-stopped
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /usr/bin/docker:/usr/bin/docker
+     - /home/ubuntuserver/jenkins:/var/jenkins_home
+    ports:
+     - 8081:8080
+  registry:
+    container_name: "he14vis-registry"
+    restart: always
+    image: "registry:2.6.1"
+    ports:
+     - 5000:5000
+    #environment:
+      #REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+      #REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+      #REGISTRY_AUTH: htpasswd
+      #REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      #REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    volumes:
+      - /home/ubuntuserver/registry/data:/var/lib/registry
+      - /home/ubuntuserver/registry/certs:/certs
+      - /home/ubuntuserver/registry/auth:/auth
