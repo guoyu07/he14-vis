@@ -17,12 +17,12 @@ services:
     image: "registry:2.6.1"
     ports:
      - 5000:5000
-    #environment:
+    environment:
       #REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
       #REGISTRY_HTTP_TLS_KEY: /certs/domain.key
-      #REGISTRY_AUTH: htpasswd
-      #REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
-      #REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /mnt/data/registry/auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
     volumes:
       - /mnt/data/registry/data:/var/lib/registry
       - /mnt/data/registry/certs:/certs
