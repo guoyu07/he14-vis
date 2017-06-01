@@ -24,6 +24,6 @@ services:
       #REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
       #REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
     volumes:
-      - /home/ubuntuserver/registry/data:/var/lib/registry
-      - /home/ubuntuserver/registry/certs:/certs
-      - /home/ubuntuserver/registry/auth:/auth
+      - /mnt/data/registry/data:/var/lib/registry
+      - /mnt/data/registry/certs:/certs
+      - /mnt/data/registry/auth:/auth
